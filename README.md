@@ -6,6 +6,9 @@ Live at [machildcareassistance.vercel.app](https://machildcareassistance.vercel.
 
 ---
 
+<img width="956" height="915" alt="image" src="https://github.com/user-attachments/assets/78eb465a-d21f-481b-b42c-47ae070539c1" />
+
+
 ## Why This Exists
 
 Massachusetts has a childcare subsidy program that helps low-income families pay for childcare. The program is managed by the Department of Early Education and Care (EEC) and administered through a network of regional agencies called CCR&Rs (Child Care Resource and Referral agencies). It's a lifeline for thousands of families.
@@ -31,6 +34,9 @@ This is not a replacement for caseworkers or the agencies that serve families. I
 **An annotation layer** — behind the wiki content, there's a separate layer of practitioner notes drawn from real caseworker experience. These capture what actually happens versus what the regulations say: common mistakes families make, things caseworkers wish families knew, timing that matters in practice. The chatbot can access these notes when a question calls for practical guidance, not just policy.
 
 **Search** — a full-text search across all 39 articles, running entirely in the browser with no server calls. Searches the article summaries, ranks results by title match, surfaces the relevant section for each result.
+
+<img width="1861" height="934" alt="image" src="https://github.com/user-attachments/assets/add11164-70ea-4d69-82be-ce154e069082" />
+
 
 ## What It Is Not
 
