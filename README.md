@@ -15,15 +15,15 @@ Massachusetts has a childcare subsidy program that helps low-income families pay
 
 The problem is that the rules governing this program are spread across 5,000+ lines of regulations, policy guides, and advisory memos. Caseworkers at CCR&Rs spend years absorbing this knowledge through training, experience, and hallway conversation. Families and childcare providers — the people the system is built to serve — have almost no way to access it on their own.
 
-When a parent gets a letter saying their voucher is being terminated, they don't know they have 14 days to file an appeal that keeps their childcare running while the appeal is reviewed. When a provider has a question about attendance reporting, they can't look it up anywhere. When a family's income changes, they don't know what they're required to report versus what they can choose to report. The information exists, but it's locked inside a system that was never designed to be read by the people it affects most.
-
 This project exists to change that.
+
+This is not a replacement for caseworkers or the agencies that serve families. It's a tool that helps both sides. When families arrive at their CCR&R already understanding the basics — what documents to bring, what "service need" means, what happens at reauthorization — the conversation can start further along. The caseworker spends less time explaining the system and more time helping the family navigate it.
+
+We are confident that this tool will lower the barrier to entry, the threshold, for families and providers to be a part of the system.
 
 ## Who Built This
 
 This project was created by a former caseworker at Childcare Choices of Boston, one of the CCR&Rs that administers the subsidy program in the Metro Boston area. After years of answering the same questions, watching families lose benefits they were entitled to because they didn't know the rules, and seeing how much institutional knowledge lived only in the heads of experienced staff, the idea became clear: this information needs to be written down in plain language and made available to everyone.
-
-This is not a replacement for caseworkers or the agencies that serve families. It's a tool that helps both sides. When families arrive at their CCR&R already understanding the basics — what documents to bring, what "service need" means, what happens at reauthorization — the conversation can start further along. The caseworker spends less time explaining the system and more time helping the family navigate it.
 
 ## What It Is
 
@@ -36,7 +36,6 @@ This is not a replacement for caseworkers or the agencies that serve families. I
 **Search** — a full-text search across all 39 articles, running entirely in the browser with no server calls. Searches the article summaries, ranks results by title match, surfaces the relevant section for each result.
 
 <img width="1861" height="934" alt="image" src="https://github.com/user-attachments/assets/add11164-70ea-4d69-82be-ce154e069082" />
-
 
 ## What It Is Not
 
