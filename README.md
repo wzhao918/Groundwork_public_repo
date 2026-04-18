@@ -2,7 +2,7 @@
 
 **A plain-language guide to the Massachusetts childcare subsidy system.**
 
-Live at [machildcareassistance.vercel.app](https://machildcareassistance.vercel.app)
+Live at [groundworkma.org](https://groundworkma.org) · Available in English, Spanish, and Haitian Creole
 
 ---
 
