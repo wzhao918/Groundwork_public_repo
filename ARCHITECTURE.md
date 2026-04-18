@@ -102,5 +102,7 @@ Storage: Upstash Redis with a 30-day rolling TTL. The telemetry pipeline uses `s
 ---
 
 *Built by [Tutti Labs](https://tuttilabs.com) — Government Legibility Division.*
+
 *Written by Claude Sonnet 4.6*
+
 *April 14, 2026*
