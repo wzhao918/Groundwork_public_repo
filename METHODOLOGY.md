@@ -10,7 +10,6 @@ This document describes how this system was built — not the what, but the how.
 
 What follows is something more disciplined: a collaborative process in which the human is the architect, domain expert, and final decision-maker, and the AI is the planning, implementation, and documentation partner. The AI writes most of the code and most of the content. The human defines what gets built, reviews decisions before they're implemented, and contributes the practitioner knowledge that makes the content worth reading.
 
-The distinction is not about distrust of AI capabilities. It's about responsibility. For a tool such as this that advises low-income families about government benefits, these decisions are not to be made lightly.
 
 ---
 
