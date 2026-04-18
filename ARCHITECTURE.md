@@ -20,9 +20,11 @@ Content is organized in three strictly separate layers:
 
 **Wiki** — policy as-written. Plain English descriptions of what the regulations say, organized by the journey a user actually takes through the system. Every claim is citable to a specific policy document and version. This layer can be audited against official EEC documents at any time. No interpretation, no practitioner opinion.
 
-**Summaries** — one dense paragraph per wiki page, written for the chatbot. Enough to answer most questions without loading the full page. Think of it as a card catalog entry for each article.
+**Summaries** — one dense paragraph per wiki page, written for the chatbot. Enough to answer most questions without loading the full page. Think of it as a card catalog entry for each article. Summaries exist in English, Spanish, and Haitian Creole (39 pages × 3 languages); the chatbot retrieves the version matching the user's declared language, falling back to English when a translation is missing.
 
 **Annotations** — practitioner expertise, kept strictly separate. What actually happens in practice, common failure modes, things experienced caseworkers know that aren't written down anywhere. This layer can only be written by or with domain experts. It is never merged into the wiki layer; the two are accessed separately by the chatbot depending on what kind of question is being asked.
+
+**Status Notes** — a narrow third content surface. A dated, sourced callout at the top of a wiki page documenting an operational condition that materially changes how that page's policy functions right now (e.g., a funding hold that pauses new enrollment). Not practitioner expertise, not policy-as-written — a factual operational disclosure with an "as of DATE" stamp. Used sparingly, only when omitting the note would mislead a reader about whether they can actually use the policy described.
 
 The separation is enforced architecturally, not just by convention. The boundary between "what the regulation says" and "what a practitioner knows" is the most important boundary in the system. Collapsing it would make the wiki unauditable and the annotations untrustworthy.
 
@@ -39,7 +41,7 @@ Content is organized across three hallways:
 
 The chatbot uses structured lookup rather than embedding-based retrieval (RAG).
 
-Every conversation turn, the LLM loads a compact retrieval index (~2,500 tokens) containing page IDs, routing tags, trigger phrases, deadlines, and circuit breakers for all 39 wiki pages. When a user asks a question, the LLM uses this index to identify which pages are relevant, then fetches their summaries. If a summary isn't sufficient, it escalates to the full wiki page, then to the annotation layer.
+Every conversation turn, the LLM loads a compact retrieval index (~2,500 tokens) containing page IDs, routing tags, trigger phrases, deadlines, and circuit breakers for all 39 wiki pages. When a user asks a question, the LLM uses this index to identify which pages are relevant, then calls `get_summary` (the primary retrieval tool — accepts a `language` parameter for en/es/ht). If a summary isn't sufficient, it escalates to `get_wiki_page` for the full English policy text, or `get_annotation` for practitioner expertise. A fourth tool, `get_event_chain`, retrieves ordered step sequences for process-shaped questions. Every retrieval is logged and traceable.
 
 **Why not RAG?**
 
@@ -57,7 +59,9 @@ The site is built with [Astro](https://astro.build), a framework that generates 
 
 There is no database. There are no user accounts. There is no CMS. The content lives in markdown files in the repository; the site is the rendered form of those files.
 
-The only server-side component is a Vercel serverless function that handles chatbot API calls. Everything else is served as static files from a CDN.
+The only server-side components are a Vercel serverless function that handles chatbot API calls and a small admin/telemetry dashboard (gated by a shared key) for inspecting anonymous session metrics. Everything else is served as static files from a CDN.
+
+**UI internationalization** is handled client-side: the page renders in English at build time, and a small script swaps `[data-i18n]` nodes on load (and on a `languagechange` event) based on the user's stored language preference. This accepts a brief flash-of-English on first paint for returning non-English users, in exchange for a single static build and no routing complexity. The honest long-term answer is route-based i18n (`/es/`, `/ht/`) — deferred until wiki bodies themselves get translated.
 
 This architecture has several properties that matter for this use case:
 - **Fast on cheap phones**: a static HTML page with no JavaScript blocking render loads in under a second on a 3G connection
@@ -105,4 +109,4 @@ Storage: Upstash Redis with a 30-day rolling TTL. The telemetry pipeline uses `s
 
 *Written by Claude Sonnet 4.6*
 
-*April 14, 2026*
+*April 14, 2026 — last updated April 17, 2026*
