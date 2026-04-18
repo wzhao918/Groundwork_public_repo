@@ -54,19 +54,41 @@ A well-written `CLAUDE.md` means each new session starts with a collaborator who
 
 ---
 
+## The Control Plane: One Question Per Document
+
+`CLAUDE.md` is the first of seven root-level documents that together form a **control plane** for the project. Each answers exactly one durable question that a maintainer — human or AI — might ask on day one or on day one thousand:
+
+| Document | The question it answers |
+|----------|-------------------------|
+| `CLAUDE.md` | What are the rules? |
+| `BLUEPRINT.md` | How does this system work? |
+| `PROCEDURE.md` | How do I build another one? |
+| `OPERATIONS.md` | Something changed — what do I update? |
+| `DIRECTORY.md` | Where does everything live? |
+| `GOVERNANCE.md` | Who decides what? |
+| `CHANGELOG.md` | What changed and when? |
+
+The constraint is strict: one document per question, one question per document. If a new concern emerges that none of the seven answer, it gets its own document at the root, not a subsection inside an existing one. If two documents start to overlap, one of them is wrong.
+
+The most important of the seven — and the one we had to discover the hard way — is `OPERATIONS.md`. It is a **routing table for change propagation**: when the homepage adds a new UI string, what else needs to change? When a wiki page gets a new source citation, what else? When an environment variable rotates? The document enumerates change types and, for each, the downstream artifacts that must be updated in the same session.
+
+This is a structural answer to documentation drift, not a cultural one. "Keep docs in sync" is a wish. A named routing table that names every change type and its downstream effects is a mechanism. When we noticed a silent drift today — a tool had been added to the chatbot months ago and `CLAUDE.md` still didn't list it — the fix wasn't just updating `CLAUDE.md`; it was adding that category of change to `OPERATIONS.md` so the next instance catches itself.
+
+The control plane sits above everything else in the repository. Operational documents (the `documentation/` tree) answer narrower, more time-bounded questions. The superdocs answer the ones that outlive any single session.
+
+---
+
 ## Tiered Documentation
 
-Not all documentation serves the same purpose. Conflating them creates noise.
+Under the control plane, operational documentation falls into three tiers. Not all documentation serves the same purpose; conflating them creates noise.
 
-**Living documents** (`documentation/active/`): The current authoritative state of the project. `BUILD_PLAN.md` tracks what's done and what's left. `ARCHITECTURE.md` (internal) describes the system as it exists now. These are updated in place and always reflect the present.
+**Living documents** (`documentation/active/`): The current authoritative state of specific concerns — deferred-work lists, status-note indexes, staleness tracking. Updated in place; always reflect the present.
 
 **Reference documents** (`documentation/reference/`): Stable lookup tables and specifications. The chatbot retrieval index. The wiki taxonomy. Page metadata with sources and citations. Consulted frequently, updated rarely.
 
 **Snapshots** (`documentation/snapshots/`): Point-in-time records of sessions. Never edited after the fact. Accumulate as a log of the build history.
 
-**Root-level persistent brief** (`CLAUDE.md`): Invariants, working style, architecture overview, and pointers to sources of truth. Loaded every session.
-
-The discipline of asking "where does this information live?" before writing it down — rather than writing it in whatever document is currently open — prevents the drift where the same decision is recorded in three places and they gradually become inconsistent with each other.
+The discipline of asking "where does this information live?" before writing it down — rather than writing it in whatever document is currently open — prevents the drift where the same decision is recorded in three places and they gradually become inconsistent with each other. For control-plane questions the answer is always one of the seven root documents; for everything else, one of the three operational tiers.
 
 ---
 
@@ -96,7 +118,7 @@ We want to be honest about what's new and what's just good engineering practice 
 
 **Probably not new:** architecture-before-code, single source of truth, tiered documentation. These are standard software engineering disciplines.
 
-**Probably new:** the snapshot-as-cross-session-memory pattern, specifically applied to AI collaboration. The practice of writing documentation *for a future AI instance* rather than for a human reader. The three-layer content architecture (policy / retrieval summary / practitioner annotation) for government legibility systems.
+**Probably new:** the snapshot-as-cross-session-memory pattern, specifically applied to AI collaboration. The practice of writing documentation *for a future AI instance* rather than for a human reader. The three-layer content architecture (policy / retrieval summary / practitioner annotation) for government legibility systems. The superdoc control plane — a fixed set of root-level documents each answering one durable question, with a named routing table (`OPERATIONS.md`) that enumerates change types and their downstream effects.
 
 **Worth naming:** the distinction between this approach and "vibe coding" is not yet well-articulated in the literature. Most discussion of AI-assisted development assumes either full autonomy (the AI does everything) or pure acceleration (the AI autocompletes your code faster). The collaborative model — where the human architect and the AI implementer work together on an explicit plan with written documentation — is a third mode that produces different results.
 
@@ -106,4 +128,4 @@ We want to be honest about what's new and what's just good engineering practice 
 
 *Written by: Warren Zhao and Claude Sonnet 4.6*
 
-*April 14, 2026*
+*April 14, 2026 — last updated April 17, 2026*
