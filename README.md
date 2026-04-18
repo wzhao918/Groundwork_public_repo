@@ -6,7 +6,7 @@ Live at [machildcareassistance.vercel.app](https://machildcareassistance.vercel.
 
 ---
 
-<img width="956" height="915" alt="image" src="https://github.com/user-attachments/assets/78eb465a-d21f-481b-b42c-47ae070539c1" />
+<img width="1862" height="896" alt="image" src="https://github.com/user-attachments/assets/5eaa9bb8-f5de-4e55-a9a2-47c974022791" />
 
 
 ## Why This Exists
@@ -35,7 +35,8 @@ This project was created by a former caseworker at Childcare Choices of Boston, 
 
 **Search** — a full-text search across all 39 articles, running entirely in the browser with no server calls. Searches the article summaries, ranks results by title match, surfaces the relevant section for each result.
 
-<img width="1861" height="934" alt="image" src="https://github.com/user-attachments/assets/add11164-70ea-4d69-82be-ce154e069082" />
+<img width="1865" height="893" alt="image" src="https://github.com/user-attachments/assets/cadf0731-b096-481a-89f0-3fa1f184ee47" />
+
 
 ## What It Is Not
 
@@ -75,7 +76,7 @@ If you're interested in the collaborative process used to build it — how we ma
 
 ---
 
-Built by [Tutti Labs](https://tuttilabs.com).
+Built by [Tutti Labs].
 
 This is a public repository for a private project.
 
